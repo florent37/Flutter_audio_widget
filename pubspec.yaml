@@ -1,6 +1,6 @@
 name: audio_widget
 description: Play an audio on flutter can be as simple as display an image ! Just add a widget into the tree
-version: 0.0.1
+version: 0.0.1+1
 author: Florent Champigny <champigny.florent@gmail.com>
 homepage: https://github.com/florent37/Flutter-AssetsAudioPlayer
 

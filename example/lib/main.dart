@@ -1,5 +1,6 @@
 import 'package:audio_widget/audio_widget.dart';
 import 'package:flutter/material.dart';
+
 import './string_duration.dart';
 
 void main() {
@@ -53,7 +54,6 @@ class MyPageWithAudio extends StatefulWidget {
 }
 
 class _MyPageWithAudioState extends State<MyPageWithAudio> {
-
   bool _play = false;
   String _currentPosition = "";
 
@@ -83,7 +83,10 @@ class _MyPageWithAudioState extends State<MyPageWithAudio> {
               shape: CircleBorder(),
               padding: EdgeInsets.all(14),
               color: Theme.of(context).primaryColor,
-              child: Icon(_play ? Icons.pause : Icons.play_arrow, color: Colors.white,),
+              child: Icon(
+                _play ? Icons.pause : Icons.play_arrow,
+                color: Colors.white,
+              ),
               onPressed: () {
                 setState(() {
                   _play = !_play;
@@ -93,6 +96,24 @@ class _MyPageWithAudioState extends State<MyPageWithAudio> {
           ),
           Text(_currentPosition),
         ],
+      ),
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return AudioWidget.assets(
+      path: "assets/audios/country.mp3",
+      play: _play,
+      child: RaisedButton(
+        child: Text(
+          _play ? "pause" : "play",
+        ),
+        onPressed: () {
+          setState(() {
+            _play = !_play;
+          });
+        },
       ),
     );
   }
