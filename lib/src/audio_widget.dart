@@ -8,7 +8,7 @@ import 'player/defaultAudioPlayer.dart';
 
 export 'audio/audio_type.dart';
 
-class AudioWidget extends StatefulWidget {
+class Audio extends StatefulWidget {
   final Widget child;
 
   final bool controlledByPlaylist;
@@ -24,7 +24,7 @@ class AudioWidget extends StatefulWidget {
   final Function() onFinished;
   final Duration initialPosition;
 
-  AudioWidget._({
+  Audio._({
     Key key,
     this.child,
     this.audioType,
@@ -39,7 +39,7 @@ class AudioWidget extends StatefulWidget {
     this.controlledByPlaylist = false,
   }) : super(key: key);
 
-  AudioWidget.assets({
+  Audio.assets({
     Key key,
     @required this.child,
     @required this.path,
@@ -54,7 +54,7 @@ class AudioWidget extends StatefulWidget {
         this.controlledByPlaylist = false,
         super(key: key);
 
-  AudioWidget.network({
+  Audio.network({
     Key key,
     @required this.child,
     @required this.path,
@@ -69,7 +69,7 @@ class AudioWidget extends StatefulWidget {
         this.controlledByPlaylist = false,
         super(key: key);
 
-  AudioWidget.file({
+  Audio.file({
     Key key,
     @required this.child,
     @required this.path,
@@ -85,9 +85,9 @@ class AudioWidget extends StatefulWidget {
         super(key: key);
 
   @override
-  _AudioWidgetState createState() => _AudioWidgetState();
+  _AudioState createState() => _AudioState();
 
-  AudioWidget copyWith({
+  Audio copyWith({
     Widget child,
     String path,
     AudioType audioType,
@@ -100,7 +100,7 @@ class AudioWidget extends StatefulWidget {
     Duration initialPosition,
     bool controlledByPlaylist,
   }) {
-    return AudioWidget._(
+    return Audio._(
       child: child ?? this.child,
       path: path ?? this.path,
       audioType: audioType ?? this.audioType,
@@ -116,7 +116,7 @@ class AudioWidget extends StatefulWidget {
   }
 }
 
-class _AudioWidgetState extends State<AudioWidget> {
+class _AudioState extends State<Audio> {
   AudioWidgetPlayer _player;
   StreamSubscription _currentPositionSubscription;
 
@@ -162,7 +162,7 @@ class _AudioWidgetState extends State<AudioWidget> {
   }
 
   @override
-  void didUpdateWidget(AudioWidget oldWidget) {
+  void didUpdateWidget(Audio oldWidget) {
     super.didUpdateWidget(oldWidget);
 
     //if it's not the same path -> open the new one

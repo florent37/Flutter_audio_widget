@@ -1,7 +1,7 @@
 # audio_widget
 
 ```dart
-AudioWidget.assets(
+Audio.assets(
   path: "assets/audios/country.mp3",
   play: true, //AudioWidget does not maintain the play state
   child: ...
@@ -10,7 +10,7 @@ AudioWidget.assets(
 
 # Update
 
-Like usual Flutter widgets, just update the parameters of the AudioWidget
+Like usual Flutter widgets, just update the parameters of the `Audio`
 
 ```dart
 //inside a stateful widget
@@ -19,7 +19,7 @@ bool _play = false;
 
 @override
 Widget build(BuildContext context) {
-  return AudioWidget.assets(
+  return Audio.assets(
      path: "assets/audios/country.mp3",
      play: _play,
      child: RaisedButton(
@@ -39,7 +39,7 @@ Widget build(BuildContext context) {
 # Listeners
 
 ```dart
-AudioWidget.assets(
+Audio.assets(
   path: "assets/audios/country.mp3",
   play: _play,
 

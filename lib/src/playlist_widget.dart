@@ -11,11 +11,11 @@ class _PlaylistWidget extends StatefulWidget {
   final double volume;
   final bool play;
   final bool loop;
-  final Function(AudioWidget, Duration current, Duration total)
+  final Function(Audio, Duration current, Duration total)
       onPositionChanged;
   final Function() onReadyToPlay;
-  final Function(AudioWidget) onCurrentAudioChanged;
-  final Function(AudioWidget) onAudioFinished;
+  final Function(Audio) onCurrentAudioChanged;
+  final Function(Audio) onAudioFinished;
   final Function() onPlaylistFinished;
 
   const _PlaylistWidget(
@@ -39,8 +39,8 @@ class _PlaylistWidgetState extends State<_PlaylistWidget> {
   int currentPosition = -1;
   List<Widget> children;
 
-  List<AudioWidget> get songs =>
-      this.children.where((child) => child is AudioWidget).toList();
+  List<Audio> get songs =>
+      this.children.where((child) => child is Audio).toList();
 
   @override
   void initState() {
@@ -63,7 +63,7 @@ class _PlaylistWidgetState extends State<_PlaylistWidget> {
     Function() onFinished,
   }) {
     final item = widget.children[index];
-    if (item is AudioWidget) {
+    if (item is Audio) {
       widget.children[index] = item.copyWith(
           play: play,
           onPositionChanged: onPositionChanged,
