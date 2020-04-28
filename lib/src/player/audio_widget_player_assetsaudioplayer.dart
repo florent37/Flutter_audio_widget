@@ -1,13 +1,13 @@
 import 'dart:async';
 
-import 'package:assets_audio_player/assets_audio_player.dart' as assetsAudioPlayer;
+import 'package:assets_audio_player/assets_audio_player.dart'
+    as assetsAudioPlayer;
 
 import 'audio_widget_player.dart';
 
 class AudioWidgetPlayerAssetsAudioPlayer extends AudioWidgetPlayer {
-
-  final assetsAudioPlayer.AssetsAudioPlayer _player = assetsAudioPlayer.AssetsAudioPlayer.newPlayer();
-
+  final assetsAudioPlayer.AssetsAudioPlayer _player =
+      assetsAudioPlayer.AssetsAudioPlayer.newPlayer();
 
   @override
   void play() => _player.play();
@@ -26,8 +26,8 @@ class AudioWidgetPlayerAssetsAudioPlayer extends AudioWidgetPlayer {
   @override
   Duration get totalDuration => _totalDuration;
 
-  assetsAudioPlayer.Audio _mapAudio(String path, AudioType audioType){
-    switch(audioType){
+  assetsAudioPlayer.Audio _mapAudio(String path, AudioType audioType) {
+    switch (audioType) {
       case AudioType.network:
         return assetsAudioPlayer.Audio.network(path);
         break;
@@ -40,7 +40,6 @@ class AudioWidgetPlayerAssetsAudioPlayer extends AudioWidgetPlayer {
         break;
     }
   }
-
 
   @override
   bool get loop => _player.loop;
@@ -61,15 +60,16 @@ class AudioWidgetPlayerAssetsAudioPlayer extends AudioWidgetPlayer {
     Duration initialPosition,
     Function(Duration totalDuration) onReadyToPlay,
     Function() onFinish,
-  }){
+  }) {
     final audio = _mapAudio(path, audioType);
 
     _player.loop = loop;
-    _player.open(audio, autoStart: autoStart, volume: volume, seek: initialPosition);
+    _player.open(audio,
+        autoStart: autoStart, volume: volume, seek: initialPosition);
 
     onReadyToPlaySubscription?.cancel();
     onReadyToPlaySubscription = null;
-    if(onReadyToPlay != null){
+    if (onReadyToPlay != null) {
       onReadyToPlaySubscription = _player.onReadyToPlay.listen((audio) {
         _totalDuration = audio.duration;
         onReadyToPlay(_totalDuration);
@@ -78,8 +78,9 @@ class AudioWidgetPlayerAssetsAudioPlayer extends AudioWidgetPlayer {
 
     playlistAudioFinishedSubscription?.cancel();
     playlistAudioFinishedSubscription = null;
-    if(onFinish != null) {
-      playlistAudioFinishedSubscription = _player.playlistAudioFinished.listen((event) {
+    if (onFinish != null) {
+      playlistAudioFinishedSubscription =
+          _player.playlistAudioFinished.listen((event) {
         onFinish();
       });
     }
@@ -92,7 +93,7 @@ class AudioWidgetPlayerAssetsAudioPlayer extends AudioWidgetPlayer {
   void seek(Duration to) => _player.seek(to);
 
   @override
-  void dispose(){
+  void dispose() {
     onReadyToPlaySubscription?.cancel();
     onReadyToPlaySubscription = null;
 

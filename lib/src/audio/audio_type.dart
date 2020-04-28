@@ -1,5 +1,1 @@
-enum AudioType {
-  network,
-  asset,
-  file
-}
+enum AudioType { network, asset, file }

@@ -11,35 +11,36 @@ class _PlaylistWidget extends StatefulWidget {
   final double volume;
   final bool play;
   final bool loop;
-  final Function(AudioWidget, Duration current, Duration total) onPositionChanged;
+  final Function(AudioWidget, Duration current, Duration total)
+      onPositionChanged;
   final Function() onReadyToPlay;
   final Function(AudioWidget) onCurrentAudioChanged;
   final Function(AudioWidget) onAudioFinished;
   final Function() onPlaylistFinished;
 
-  const _PlaylistWidget({
-    Key key,
-    this.children,
-    this.volume = 1.0,
-    this.play = true,
-    this.loop = false,
-    this.onPositionChanged,
-    this.onReadyToPlay,
-    this.onAudioFinished,
-    this.onCurrentAudioChanged,
-    this.onPlaylistFinished
-  }) : super(key: key);
+  const _PlaylistWidget(
+      {Key key,
+      this.children,
+      this.volume = 1.0,
+      this.play = true,
+      this.loop = false,
+      this.onPositionChanged,
+      this.onReadyToPlay,
+      this.onAudioFinished,
+      this.onCurrentAudioChanged,
+      this.onPlaylistFinished})
+      : super(key: key);
 
   @override
   _PlaylistWidgetState createState() => _PlaylistWidgetState();
 }
 
 class _PlaylistWidgetState extends State<_PlaylistWidget> {
-
   int currentPosition = -1;
   List<Widget> children;
 
-  List<AudioWidget> get songs => this.children.where((child) => child is AudioWidget).toList();
+  List<AudioWidget> get songs =>
+      this.children.where((child) => child is AudioWidget).toList();
 
   @override
   void initState() {
@@ -47,16 +48,15 @@ class _PlaylistWidgetState extends State<_PlaylistWidget> {
     this.children = widget.children;
     if (this.songs?.length ?? 0 > 0) {
       currentPosition = 0;
-      updateSongAtIndex(0,
-        play: true
-      );
+      updateSongAtIndex(0, play: true);
       //widget.children[0].player.play();
     } else {
       print("cannot open a playlist with 0 songs");
     }
   }
 
-  void updateSongAtIndex(int index, {
+  void updateSongAtIndex(
+    int index, {
     bool play,
     Function(Duration current, Duration total) onPositionChanged,
     Function(Duration totalDuration) onReadyToPlay,
@@ -68,8 +68,7 @@ class _PlaylistWidgetState extends State<_PlaylistWidget> {
           play: play,
           onPositionChanged: onPositionChanged,
           onReadyToPlay: onReadyToPlay,
-          onFinished: onFinished
-      );
+          onFinished: onFinished);
     }
   }
 

@@ -7,7 +7,6 @@ import 'player/audio_widget_player.dart';
 import 'player/defaultAudioPlayer.dart';
 
 export 'audio/audio_type.dart';
-import 'package:rxdart/rxdart.dart';
 
 class AudioWidget extends StatefulWidget {
   final Widget child;
@@ -51,8 +50,7 @@ class AudioWidget extends StatefulWidget {
     this.initialPosition,
     this.onReadyToPlay,
     this.onFinished,
-  })
-      : this.audioType = AudioType.asset,
+  })  : this.audioType = AudioType.asset,
         this.controlledByPlaylist = false,
         super(key: key);
 
@@ -67,8 +65,7 @@ class AudioWidget extends StatefulWidget {
     this.initialPosition,
     this.onReadyToPlay,
     this.onFinished,
-  })
-      : this.audioType = AudioType.network,
+  })  : this.audioType = AudioType.network,
         this.controlledByPlaylist = false,
         super(key: key);
 
@@ -83,8 +80,7 @@ class AudioWidget extends StatefulWidget {
     this.initialPosition,
     this.onReadyToPlay,
     this.onFinished,
-  })
-      : this.audioType = AudioType.file,
+  })  : this.audioType = AudioType.file,
         this.controlledByPlaylist = false,
         super(key: key);
 
@@ -118,11 +114,9 @@ class AudioWidget extends StatefulWidget {
       controlledByPlaylist: controlledByPlaylist ?? this.controlledByPlaylist,
     );
   }
-
 }
 
 class _AudioWidgetState extends State<AudioWidget> {
-
   AudioWidgetPlayer _player;
   StreamSubscription _currentPositionSubscription;
 
@@ -145,7 +139,7 @@ class _AudioWidgetState extends State<AudioWidget> {
       onFinish: _onFinished,
     );
 
-    _currentPositionSubscription =_player.currentPosition.listen((current) {
+    _currentPositionSubscription = _player.currentPosition.listen((current) {
       final total = _player.totalDuration;
       if (current != null && total != null) {
         widget.onPositionChanged(current, total);
