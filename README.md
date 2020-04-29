@@ -1,6 +1,7 @@
 # audio_widget
 
 [![sample](./medias/sample.gif)](https://github.com/florent37/Flutter_audio_widget)
+(this widget does not display anything)
 
 Play an audio on flutter can be as simple as display an image ! Just add a widget into the tree
 
