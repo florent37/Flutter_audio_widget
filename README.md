@@ -36,6 +36,38 @@ Widget build(BuildContext context) {
 }
 ```
 
+# How to stop ?
+
+Just remove the Audio from the tree !
+Or simply keep `play: false`
+
+# How to seek ?
+
+Just update the `initialPosition` of the Audio
+
+```dart
+//inside a stateful widget
+
+Duration _seek;
+
+@override
+Widget build(BuildContext context) {
+  return Audio.assets(
+     path: "assets/audios/country.mp3",
+     play: true,
+     initialPosition: _seek,
+     child: RaisedButton(
+       child: Text("seek"),
+       onPressed: () {
+         setState(() {
+           _seek = Duration(seconds: 30);
+         });
+       },
+     ),
+  );
+}
+```
+
 # Listeners
 
 ```dart

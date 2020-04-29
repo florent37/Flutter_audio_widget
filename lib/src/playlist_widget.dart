@@ -11,8 +11,7 @@ class _PlaylistWidget extends StatefulWidget {
   final double volume;
   final bool play;
   final bool loop;
-  final Function(Audio, Duration current, Duration total)
-      onPositionChanged;
+  final Function(Audio, Duration current, Duration total) onPositionChanged;
   final Function() onReadyToPlay;
   final Function(Audio) onCurrentAudioChanged;
   final Function(Audio) onAudioFinished;
