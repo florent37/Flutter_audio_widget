@@ -54,3 +54,31 @@ Audio.assets(
   child: ...
 )
 ```
+
+# Player
+
+By default, `Audio` uses [Assets Audio Player](https://pub.dev/packages/assets_audio_player) to play its songs
+
+You can change it just by create a new wrapper of `AudioWidgetPlayer`
+
+```dart
+class AudioWidgetMyPlayer extends AudioWidgetPlayer {
+  final MyPlayer _player = MyPlayer();
+
+  @override
+  void play() => _player.play();
+
+  @override
+  void pause() => _player.pause();
+
+  //etc.
+```
+
+and update the `defaultAudioWidgetPlayer` inside your main
+
+```
+void main() {
+    defaultAudioWidgetPlayer = () => AudioWidgetMyPlayer();
+    runApp(MyApp());
+}
+```

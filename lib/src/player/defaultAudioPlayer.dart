@@ -1,5 +1,6 @@
 import 'audio_widget_player.dart';
 import 'audio_widget_player_assetsaudioplayer.dart';
+export 'audio_widget_player_assetsaudioplayer.dart';
 
 typedef AudioWidgetPlayerCreator = AudioWidgetPlayer Function();
 
