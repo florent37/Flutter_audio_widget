@@ -8,7 +8,7 @@ Audio.assets(
 )
 ```
 
-# Update
+# ⏯ Play / Pause
 
 Like usual Flutter widgets, just update the parameters of the `Audio`
 
@@ -36,12 +36,12 @@ Widget build(BuildContext context) {
 }
 ```
 
-# How to stop ?
+# 🛑 How to stop ?
 
 Just remove the Audio from the tree !
 Or simply keep `play: false`
 
-# How to seek ?
+# ⏩ How to seek ?
 
 Just update the `initialPosition` of the Audio
 
@@ -68,7 +68,7 @@ Widget build(BuildContext context) {
 }
 ```
 
-# Listeners
+# 🙉 Listeners
 
 ```dart
 Audio.assets(
@@ -87,7 +87,7 @@ Audio.assets(
 )
 ```
 
-# Player
+# 💽 Player
 
 By default, `Audio` uses [Assets Audio Player](https://pub.dev/packages/assets_audio_player) to play its songs
 
